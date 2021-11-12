@@ -15,7 +15,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.charlezz.layoutinjetpackcompose.ui.theme.LayoutInJetpackComposeTheme
+import com.charlezz.layoutinjetpackcompose.ui.theme.LayoutsInJetpackComposeTheme
 
 @Composable
 fun StaggeredGrid(
@@ -105,7 +105,7 @@ fun Chip(modifier: Modifier = Modifier, text: String) {
 @Preview
 @Composable
 fun ChipPreview() {
-    LayoutInJetpackComposeTheme {
+    LayoutsInJetpackComposeTheme {
         Chip(text = "Hi there")
     }
 }

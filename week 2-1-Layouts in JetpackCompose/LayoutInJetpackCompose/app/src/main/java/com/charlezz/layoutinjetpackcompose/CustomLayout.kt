@@ -8,7 +8,7 @@ import androidx.compose.ui.layout.*
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.charlezz.layoutinjetpackcompose.ui.theme.LayoutInJetpackComposeTheme
+import com.charlezz.layoutinjetpackcompose.ui.theme.LayoutsInJetpackComposeTheme
 
 fun Modifier.firstBaselineToTop(
     firstBaselineToTop: Dp
@@ -36,7 +36,7 @@ fun Modifier.firstBaselineToTop(
 @Preview
 @Composable
 fun TextWithPaddingToBaselinePreview() {
-    LayoutInJetpackComposeTheme {
+    LayoutsInJetpackComposeTheme {
         Text("Hi there!", Modifier.firstBaselineToTop(32.dp))
     }
 }
@@ -44,7 +44,7 @@ fun TextWithPaddingToBaselinePreview() {
 @Preview
 @Composable
 fun TextWithNormalPaddingPreview() {
-    LayoutInJetpackComposeTheme {
+    LayoutsInJetpackComposeTheme {
         Text("Hi there!", Modifier.padding(top = 32.dp))
     }
 }

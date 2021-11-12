@@ -7,35 +7,25 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.AlignmentLine
-import androidx.compose.ui.layout.FirstBaseline
-import androidx.compose.ui.layout.Layout
-import androidx.compose.ui.layout.layout
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import com.charlezz.layoutinjetpackcompose.ui.theme.LayoutInJetpackComposeTheme
+import com.charlezz.layoutinjetpackcompose.ui.theme.LayoutsInJetpackComposeTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LayoutInJetpackComposeTheme {
+            LayoutsInJetpackComposeTheme {
                 LayoutsCodelab()
             }
         }
@@ -57,7 +47,8 @@ fun LayoutsCodelab() {
             )
         }
     ) { innerPadding ->
-        BodyContent(Modifier.padding(innerPadding))
+//        BodyContent(Modifier.padding(innerPadding))
+        DecoupledConstraintLayout()
     }
 }
 
@@ -86,7 +77,7 @@ fun BodyContent(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun LayoutsCodelabPreview() {
-    LayoutInJetpackComposeTheme {
+    LayoutsInJetpackComposeTheme {
         LayoutsCodelab()
 //        ScrollingList()
 //        BodyContent()
