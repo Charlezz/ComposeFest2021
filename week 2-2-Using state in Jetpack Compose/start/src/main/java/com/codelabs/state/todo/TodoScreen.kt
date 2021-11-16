@@ -51,7 +51,7 @@ fun TodoScreen(
 ) {
     Column {
         TodoItemInputBackground(elevate = true, Modifier.fillMaxWidth()) {
-            TodoItemInput(onItemComplete = onAddItem)
+            TodoItemEntryInput(onItemComplete = onAddItem)
         }
         LazyColumn(
             modifier = Modifier.weight(1f),
@@ -139,8 +139,11 @@ fun TodoInputTextField(text: String, onTextChange: (String) -> Unit, modifier: M
     TodoInputText(text = text, onTextChange = onTextChange, modifier)
 }
 
-@Composable
-fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
+
+@Composable //stateful한 함수
+fun TodoItemEntryInput(
+    onItemComplete: (TodoItem) -> Unit
+) {
     Log.e("TodoScreen","TodoItemInput called")
     // onItemComplete is an event will fire when an item is completed by the user
 
@@ -152,6 +155,25 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
         setIcon(TodoIcon.Default)
         setText("")
     }
+    TodoItemInput(
+        text = text,
+        onTextChange = setText,
+        icon = icon,
+        onIconChange = setIcon,
+        submit = submit,
+        iconsVisible = iconsVisible
+    )
+}
+
+@Composable //stateless한 함수
+fun TodoItemInput(
+    text: String,
+    onTextChange: (String) -> Unit,
+    icon: TodoIcon,
+    onIconChange: (TodoIcon) -> Unit,
+    submit: () -> Unit,
+    iconsVisible: Boolean
+) {
     Column {
         Row(
             Modifier
@@ -160,7 +182,7 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
         ) {
             TodoInputText(
                 text = text,
-                onTextChange = setText,
+                onTextChange = onTextChange,
                 modifier = Modifier
                     .weight(1f)
                     .padding(end = 8.dp),
@@ -174,14 +196,15 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
             )
         }
 
-        if(iconsVisible){
-            AnimatedIconRow(icon = icon , onIconChange = setIcon, Modifier.padding(top = 8.dp))
-        }else{
-            Spacer(modifier =Modifier.height(16.dp))
+        if (iconsVisible) {
+            AnimatedIconRow(icon = icon, onIconChange = onIconChange, Modifier.padding(top = 8.dp))
+        } else {
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
+
 @Preview
 @Composable
-fun PreviewTodoItemInput() = TodoItemInput(onItemComplete = { })
+fun PreviewTodoItemInput() = TodoItemEntryInput(onItemComplete = { })
 
